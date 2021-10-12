@@ -14,8 +14,8 @@ namespace SazMart.DAL.ModelClass.DTO
         public string MobileNumber { get; set; }
         public int Age  { get; set; }
         public int Gender  { get; set; }
-        public string City  { get; set; }
-        public string Country  { get; set; }
+        public string CityName  { get; set; }
+        public string CountryName  { get; set; }
         public ICollection<PhotoDTO> Photos { get; set; }
 
     }
