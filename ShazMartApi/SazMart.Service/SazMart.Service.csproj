@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BLLManager\BLLManager.csproj" />
+    <ProjectReference Include="..\SazMart.Common\SazMart.Common.csproj" />
     <ProjectReference Include="..\SazMart.DAL\SazMart.DAL.csproj" />
   </ItemGroup>
 
