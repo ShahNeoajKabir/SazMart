@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SazMart.Common\SazMart.Common.csproj" />
     <ProjectReference Include="..\SazMart.DAL\SazMart.DAL.csproj" />
   </ItemGroup>
 

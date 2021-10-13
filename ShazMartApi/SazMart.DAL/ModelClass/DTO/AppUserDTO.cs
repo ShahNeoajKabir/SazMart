@@ -17,12 +17,15 @@ namespace SazMart.DAL.ModelClass.DTO
         [StringLength(15,MinimumLength =6)]
         public string Password { get; set; }
         [Required(ErrorMessage = "Mobile Number Required")]
-        public string MobileNumber { get; set; }
-        public DateTime DoB { get; set; }
+        public string PhoneNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public int UserType { get; set; }
+        public int Gender { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int Status { get; set; }
+        public int? CityId { get; set; }
+        public int? CountryId { get; set; }
+        public int? Status { get; set; }
 
     }
 }

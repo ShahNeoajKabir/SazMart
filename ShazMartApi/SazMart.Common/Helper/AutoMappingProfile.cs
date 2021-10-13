@@ -14,11 +14,19 @@ namespace SazMart.Common.Helper
                 .ForMember(opt => opt.Age, des => des.MapFrom(x => x.DateOfBirth.CalculateAge()))
                  .ForMember(opt => opt.CountryName, des => des.MapFrom(x => x.Country.CountryName))
                  .ForMember(opt => opt.CityName, des => des.MapFrom(x => x.City.CityName))
-                 .ForMember(opt => opt.PhotoUrl, des => des.MapFrom(x => x.AppUserPhoto.FirstOrDefault(p => p.IsMain).Url));
+                 .ForMember(opt => opt.PhotoUrl, des => des.MapFrom(x => x.AppUserPhoto.FirstOrDefault(p => p.IsMain).Url))
+                 .ForMember(opt => opt.Gender, des => des.MapFrom(x => x.Gender));
 
 
             CreateMap<Country,CountryDTO>();
             CreateMap<City,CityDTO>();
+            CreateMap<AppUserDTO,AppUser>();
+
+            CreateMap<Categories, CategoriesDTO>()
+                .ForMember(opt => opt.CategoriesName, dest => dest.MapFrom(x => x.Name))
+                .ForMember(opt => opt.SubCategories, dest => dest.MapFrom(x => x.SubCategories.FirstOrDefault().SubCategoriesName))
+                .ForMember(opt => opt.SubCategoriesDTO, dest => dest.MapFrom(x => x.SubCategories));
+            CreateMap<SubCategories, SubCategoriesDTO>();
         }
     }
 }

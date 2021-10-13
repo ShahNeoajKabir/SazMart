@@ -11,9 +11,9 @@ namespace SazMart.DAL.ModelClass.DTO
         public string PhotoUrl { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public string MobileNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public int Age  { get; set; }
-        public int Gender  { get; set; }
+        public string Gender  { get; set; }
         public string CityName  { get; set; }
         public string CountryName  { get; set; }
         public ICollection<PhotoDTO> Photos { get; set; }

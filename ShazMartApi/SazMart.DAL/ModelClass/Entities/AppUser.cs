@@ -9,7 +9,6 @@ namespace SazMart.DAL.ModelClass.Entities
 {
     public class AppUser:IdentityUser<int>
     {
-        public string PhotoUrl { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int UserType { get; set; }
         public int? Gender { get; set; }

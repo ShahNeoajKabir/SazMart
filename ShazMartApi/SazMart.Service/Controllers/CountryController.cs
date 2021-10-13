@@ -1,11 +1,8 @@
 ﻿using BLLManager.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SazMart.DAL.ModelClass.DTO;
 using SazMart.DAL.ModelClass.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SazMart.Service.Controllers

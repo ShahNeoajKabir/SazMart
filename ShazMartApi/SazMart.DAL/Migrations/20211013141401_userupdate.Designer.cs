@@ -10,8 +10,8 @@ using SazMart.DAL.Database;
 namespace SazMart.DAL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211011201857_Identity")]
-    partial class Identity
+    [Migration("20211013141401_userupdate")]
+    partial class userupdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,14 +146,14 @@ namespace SazMart.DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityId")
+                    b.Property<int?>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CountryId")
+                    b.Property<int?>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -172,14 +172,8 @@ namespace SazMart.DAL.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
+                    b.Property<int?>("Gender")
                         .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -203,9 +197,6 @@ namespace SazMart.DAL.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("PhotoUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -455,14 +446,12 @@ namespace SazMart.DAL.Migrations
                     b.HasOne("SazMart.DAL.ModelClass.Entities.City", "City")
                         .WithMany("AppUser")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SazMart.DAL.ModelClass.Entities.Country", "Country")
                         .WithMany("AppUser")
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("City");
 
