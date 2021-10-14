@@ -55,6 +55,8 @@ namespace SazMart.Service
             services.AddScoped<IUserBLLManager, UserBLLManager>();
             services.AddScoped<ICategoriesBLLManager, CategoriesBLLManager>();
             services.AddScoped<IBrandBLLManager, BrandBLLManager>();
+            services.AddScoped<ITagBLLManager, TagBLLManager>();
+            services.AddScoped<IProductBLLManager, ProductBLLManager>();
 
 
             services.AddCors(options =>
