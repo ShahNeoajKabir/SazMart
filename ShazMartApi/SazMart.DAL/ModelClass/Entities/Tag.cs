@@ -10,5 +10,7 @@ namespace SazMart.DAL.ModelClass.Entities
     {
         public int Id { get; set; }
         public string TagName { get; set; }
+        public ICollection<Product> Product { get; set; }
+
     }
 }

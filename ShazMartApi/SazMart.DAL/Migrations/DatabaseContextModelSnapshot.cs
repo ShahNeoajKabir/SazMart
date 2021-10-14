@@ -170,7 +170,10 @@ namespace SazMart.DAL.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Gender")
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Genders")
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -368,6 +371,101 @@ namespace SazMart.DAL.Migrations
                     b.ToTable("Country");
                 });
 
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Color")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("DiscountPrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ProductCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Size")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCategoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("SubCategoriesId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.ProductPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductPhoto");
+                });
+
             modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.SubCategories", b =>
                 {
                     b.Property<int>("Id")
@@ -497,6 +595,44 @@ namespace SazMart.DAL.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Product", b =>
+                {
+                    b.HasOne("SazMart.DAL.ModelClass.Entities.Brand", "Brand")
+                        .WithMany("Product")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SazMart.DAL.ModelClass.Entities.SubCategories", "SubCategories")
+                        .WithMany("Product")
+                        .HasForeignKey("SubCategoriesId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SazMart.DAL.ModelClass.Entities.Tag", "Tag")
+                        .WithMany("Product")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("SubCategories");
+
+                    b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.ProductPhoto", b =>
+                {
+                    b.HasOne("SazMart.DAL.ModelClass.Entities.Product", "AppUser")
+                        .WithMany("ProductPhoto")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.SubCategories", b =>
                 {
                     b.HasOne("SazMart.DAL.ModelClass.Entities.Categories", "Categories")
@@ -523,6 +659,8 @@ namespace SazMart.DAL.Migrations
             modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Brand", b =>
                 {
                     b.Navigation("BrandLogo");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Categories", b =>
@@ -538,6 +676,21 @@ namespace SazMart.DAL.Migrations
             modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Country", b =>
                 {
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Product", b =>
+                {
+                    b.Navigation("ProductPhoto");
+                });
+
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.SubCategories", b =>
+                {
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("SazMart.DAL.ModelClass.Entities.Tag", b =>
+                {
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

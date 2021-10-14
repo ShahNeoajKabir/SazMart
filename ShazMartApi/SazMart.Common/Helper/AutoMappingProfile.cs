@@ -22,6 +22,16 @@ namespace SazMart.Common.Helper
             CreateMap<City,CityDTO>();
             CreateMap<AppUserDTO,AppUser>();
 
+            CreateMap<Product, ProductDTO>()
+                .ForMember(x => x.BrandName, p => p.MapFrom(t => t.Brand.BrandName))
+                .ForMember(x => x.CategoriesName, p => p.MapFrom(t => t.SubCategories.Categories.Name))
+                .ForMember(x => x.SubCategoriesName, p => p.MapFrom(t => t.SubCategories.SubCategoriesName))
+                .ForMember(x => x.TagName, p => p.MapFrom(t => t.Tag.TagName))
+                .ForMember(x => x.PhotoUrl, p => p.MapFrom(x => x.ProductPhoto.FirstOrDefault(t => t.IsMain).Url));
+
+
+            CreateMap<ProductPhoto, ProductPhotoDTO>();
+
             CreateMap<Categories, CategoriesDTO>()
                 .ForMember(opt => opt.CategoriesName, dest => dest.MapFrom(x => x.Name))
                 .ForMember(opt => opt.SubCategories, dest => dest.MapFrom(x => x.SubCategories.FirstOrDefault().SubCategoriesName))

@@ -12,5 +12,7 @@ namespace SazMart.DAL.ModelClass.Entities
         public string SubCategoriesName { get; set; }
         public Categories Categories { get; set; }
         public int CategoriesId { get; set; }
+        public ICollection<Product> Product { get; set; }
+
     }
 }

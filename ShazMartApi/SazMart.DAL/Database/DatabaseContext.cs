@@ -18,6 +18,7 @@ namespace SazMart.DAL.Database
         public DbSet<City> City { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Product> Product { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -79,6 +80,19 @@ namespace SazMart.DAL.Database
                 .WithMany(m => m.AppUserRole)
                 .HasForeignKey(f => f.RoleId)
                 .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            builder.Entity<Product>(entity =>
+            {
+                entity.HasKey(p => p.Id);
+                entity.HasOne(o => o.Brand)
+                .WithMany(m => m.Product)
+                .HasForeignKey(f => f.BrandId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(o => o.SubCategories)
+               .WithMany(m => m.Product)
+               .OnDelete(DeleteBehavior.NoAction);
             });
 
         }

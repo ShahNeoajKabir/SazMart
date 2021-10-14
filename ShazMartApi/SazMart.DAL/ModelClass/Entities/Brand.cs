@@ -13,5 +13,6 @@ namespace SazMart.DAL.ModelClass.Entities
         public string Description { get; set; }
         public string Logo { get; set; }
         public ICollection<BrandLogo> BrandLogo { get; set; }
+        public ICollection<Product> Product { get; set; }
     }
 }
