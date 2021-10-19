@@ -37,6 +37,12 @@ namespace SazMart.Common.Helper
                 .ForMember(opt => opt.SubCategories, dest => dest.MapFrom(x => x.SubCategories.FirstOrDefault().SubCategoriesName))
                 .ForMember(opt => opt.SubCategoriesDTO, dest => dest.MapFrom(x => x.SubCategories));
             CreateMap<SubCategories, SubCategoriesDTO>();
+
+            CreateMap<ColorDTO, Colors>();
+            CreateMap<Colors, ColorDTO>()
+                .ForMember(s => s.ProductName,
+                d => d.MapFrom(t => t.ProductColor.
+                  FirstOrDefault().Product.ProductName));
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SazMart.DAL.Migrations
 {
-    public partial class Product : Migration
+    public partial class color : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,6 +61,19 @@ namespace SazMart.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_City", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Colors",
+                columns: table => new
+                {
+                    ColorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ColorName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Colors", x => x.ColorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -205,7 +218,7 @@ namespace SazMart.DAL.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BrandId = table.Column<int>(type: "int", nullable: false),
                     SubCategoriesId = table.Column<int>(type: "int", nullable: false),
@@ -216,7 +229,6 @@ namespace SazMart.DAL.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     DiscountPrice = table.Column<double>(type: "float", nullable: false),
                     StockQuantity = table.Column<int>(type: "int", nullable: false),
-                    Color = table.Column<int>(type: "int", nullable: false),
                     Size = table.Column<int>(type: "int", nullable: false),
                     TagId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -227,7 +239,7 @@ namespace SazMart.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Product", x => x.ProductId);
                     table.ForeignKey(
                         name: "FK_Product_Brand_BrandId",
                         column: x => x.BrandId,
@@ -355,6 +367,32 @@ namespace SazMart.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductColor",
+                columns: table => new
+                {
+                    ProductColorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ColorId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductColor", x => x.ProductColorId);
+                    table.ForeignKey(
+                        name: "FK_ProductColor_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductColor_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductPhoto",
                 columns: table => new
                 {
@@ -372,7 +410,7 @@ namespace SazMart.DAL.Migrations
                         name: "FK_ProductPhoto_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
-                        principalColumn: "Id",
+                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -451,6 +489,16 @@ namespace SazMart.DAL.Migrations
                 column: "TagId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductColor_ColorId",
+                table: "ProductColor",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductColor_ProductId",
+                table: "ProductColor",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductPhoto_ProductId",
                 table: "ProductPhoto",
                 column: "ProductId");
@@ -485,6 +533,9 @@ namespace SazMart.DAL.Migrations
                 name: "BrandLogo");
 
             migrationBuilder.DropTable(
+                name: "ProductColor");
+
+            migrationBuilder.DropTable(
                 name: "ProductPhoto");
 
             migrationBuilder.DropTable(
@@ -492,6 +543,9 @@ namespace SazMart.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Colors");
 
             migrationBuilder.DropTable(
                 name: "Product");

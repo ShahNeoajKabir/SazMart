@@ -18,9 +18,9 @@ namespace SazMart.DAL.ModelClass.DTO
         public double Price { get; set; }
         public double DiscountPrice { get; set; }
         public int StockQuantity { get; set; }
-        public int Color { get; set; }
         public int Size { get; set; }
         public string TagName { get; set; }
         public ICollection<ProductPhotoDTO> ProductPhotoDTOs { get; set; }
+        public ICollection<ProductColorDTO> ProductColorDTO { get; set; }
     }
 }

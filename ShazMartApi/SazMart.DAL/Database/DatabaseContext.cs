@@ -19,6 +19,8 @@ namespace SazMart.DAL.Database
         public DbSet<Country> Country { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Colors> Colors { get; set; }
+        public DbSet<ProductColor> ProductColor { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -28,7 +30,8 @@ namespace SazMart.DAL.Database
             builder.Entity<Brand>()
                 .HasKey(p => p.Id);
 
-
+            builder.Entity<Colors>()
+                .HasKey(p => p.ColorId);
 
             builder.Entity<Categories>()
                 .HasKey(p => p.Id);
@@ -84,7 +87,7 @@ namespace SazMart.DAL.Database
 
             builder.Entity<Product>(entity =>
             {
-                entity.HasKey(p => p.Id);
+                entity.HasKey(p => p.ProductId);
                 entity.HasOne(o => o.Brand)
                 .WithMany(m => m.Product)
                 .HasForeignKey(f => f.BrandId)
@@ -93,6 +96,22 @@ namespace SazMart.DAL.Database
                 entity.HasOne(o => o.SubCategories)
                .WithMany(m => m.Product)
                .OnDelete(DeleteBehavior.NoAction);
+            });
+
+            builder.Entity<ProductColor>(entity =>
+            {
+                entity.HasKey(p => p.ProductColorId);
+                entity.HasOne(o => o.Product)
+                .WithMany(m => m.ProductColor)
+                .HasForeignKey(f => f.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(o => o.Colors)
+                .WithMany(m => m.ProductColor)
+                .HasForeignKey(f => f.ColorId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
             });
 
         }

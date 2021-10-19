@@ -8,7 +8,7 @@ namespace SazMart.DAL.ModelClass.Entities
 {
     public class Product
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         public int BrandId { get; set; }
         public int SubCategoriesId { get; set; }
         public string PhotoUrl { get; set; }
@@ -18,7 +18,6 @@ namespace SazMart.DAL.ModelClass.Entities
         public double Price { get; set; }
         public double DiscountPrice { get; set; }
         public int StockQuantity { get; set; }
-        public int Color { get; set; }
         public int Size { get; set; }
         public int TagId { get; set; }
         public string CreatedBy { get; set; }
@@ -30,5 +29,6 @@ namespace SazMart.DAL.ModelClass.Entities
         public SubCategories SubCategories { get; set; }
         public Tag Tag { get; set; }
         public ICollection<ProductPhoto> ProductPhoto { get; set; }
+        public ICollection<ProductColor> ProductColor { get; set; }
     }
 }
