@@ -11,11 +11,15 @@ import{TabsModule} from 'ngx-bootstrap/tabs';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NavBarComponent } from './Module/Nav-Bar/nav-bar/nav-bar.component';
 import { ListcategoriesComponent } from './Module/Categories/CategoriesList/listcategories/listcategories.component';
+import { AdminNavBarComponent } from './Module/Admin/Nav-bar/admin-nav-bar/admin-nav-bar.component';
+import { BrandlistComponent } from './Module/Admin/Brand/List Brand/brandlist/brandlist.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    ListcategoriesComponent
+    ListcategoriesComponent,
+    AdminNavBarComponent,
+    BrandlistComponent
   ],
   imports: [
     BrowserModule,

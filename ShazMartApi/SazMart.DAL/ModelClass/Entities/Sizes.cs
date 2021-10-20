@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SazMart.DAL.ModelClass.Entities
 {
-    public class Unites
+    public class Sizes
     {
-        //public int Id { get; set; }
-        //public string Name { get; set; }
-        //public string Value { get; set; }
+        public int SizeId { get; set; }
+        public int SizeName { get; set; }
+        public ICollection<ProductSize> ProductSize { get; set; }
     }
 }

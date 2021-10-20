@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink='/'>SazMart</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0" >
+                <ng-container >
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink='/Brand/BrandList' routerLinkActive='active'>Brand</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink='/List' routerLinkActive='active'>Categories</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink='/List' routerLinkActive='active'>Sub Categories</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/Messeges" routerLinkActive='active'>Product</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/Admin" routerLinkActive='active'>Color</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/Admin" routerLinkActive='active'>Size</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/Admin" routerLinkActive='active'>Product Color</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/Admin" routerLinkActive='active'>Product Size</a>
+                  </li>
+                  
+
+                </ng-container>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" routerLink="/Error" routerLinkActive='active'>Error</a>
+                </li> -->
+              </ul>
+
+              <!-- <div class="dropdown"  dropdown  style="cursor: pointer;">  
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome </a>
+                  <div class=" dropdown-menu mt-3" *dropdownMenu> 
+                    <a  class="dropdown-item" routerLink="/Members/edit" > 
+                      Edit Profile
+                    </a>
+                    <a  class="dropdown-item"> 
+                       Logout
+                    </a>
+                    <div class="div dropdown-divider"></div>
+
+                  </div>   
+               
+                
+              </div> -->
+              <form    class="d-flex"  autocomplete="off">
+                <input name="UserName" class="form-control me-2" type="text" placeholder="User Name" >
+                <button class="btn btn-outline-success" type="submit">Login</button>
+                
+                
+              </form>
+            </div>
+          </div>
+    </div>
+  </nav>
+
+
+  

@@ -26,8 +26,6 @@ namespace BLLManager
 
         public async Task<Product> AddProductAsync(Product product)
         {
-            product.CreatedBy = "Bappy";
-            product.CreatedDate = DateTime.UtcNow;
             product.Status = (int)SazMart.Common.Enum.Enum.Status.Active;
             await _context.Product.AddAsync(product);
             return product;

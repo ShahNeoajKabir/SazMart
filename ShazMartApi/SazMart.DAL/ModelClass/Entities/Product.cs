@@ -18,17 +18,14 @@ namespace SazMart.DAL.ModelClass.Entities
         public double Price { get; set; }
         public double DiscountPrice { get; set; }
         public int StockQuantity { get; set; }
-        public int Size { get; set; }
-        public int TagId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public string UpdatedBy { get; set; }
-        public DateTime? UpdatedDate { get; set; }
         public int Status { get; set; }
         public Brand Brand { get; set; }
         public SubCategories SubCategories { get; set; }
-        public Tag Tag { get; set; }
+
         public ICollection<ProductPhoto> ProductPhoto { get; set; }
         public ICollection<ProductColor> ProductColor { get; set; }
+        public ICollection<ProductSize> ProductSize { get; set; }
+        public ICollection<Tag> Tag { get; set; }
+
     }
 }

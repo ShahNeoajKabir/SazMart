@@ -26,7 +26,6 @@ namespace SazMart.Common.Helper
                 .ForMember(x => x.BrandName, p => p.MapFrom(t => t.Brand.BrandName))
                 .ForMember(x => x.CategoriesName, p => p.MapFrom(t => t.SubCategories.Categories.Name))
                 .ForMember(x => x.SubCategoriesName, p => p.MapFrom(t => t.SubCategories.SubCategoriesName))
-                .ForMember(x => x.TagName, p => p.MapFrom(t => t.Tag.TagName))
                 .ForMember(x => x.PhotoUrl, p => p.MapFrom(x => x.ProductPhoto.FirstOrDefault(t => t.IsMain).Url));
 
 

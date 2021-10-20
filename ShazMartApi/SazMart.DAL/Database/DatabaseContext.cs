@@ -21,6 +21,8 @@ namespace SazMart.DAL.Database
         public DbSet<Product> Product { get; set; }
         public DbSet<Colors> Colors { get; set; }
         public DbSet<ProductColor> ProductColor { get; set; }
+        public DbSet<Sizes> Size { get; set; }
+        public DbSet<ProductSize> ProductSize { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -114,6 +116,21 @@ namespace SazMart.DAL.Database
 
             });
 
+            builder.Entity<ProductSize>(entity =>
+            {
+                entity.HasKey(p => p.ProductSizeId);
+                entity.HasOne(o => o.Product)
+                .WithMany(m => m.ProductSize)
+                .HasForeignKey(f => f.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(o => o.Sizes)
+                .WithMany(m => m.ProductSize)
+                .HasForeignKey(f => f.SizeId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            });
         }
     }
 

@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace SazMart.DAL.ModelClass.Entities
 {
-    public class Tag
+    public class ProductSize
     {
-        public int Id { get; set; }
-        public string TagName { get; set; }
+        public int ProductSizeId { get; set; }
+        public int SizeId { get; set; }
         public int ProductId { get; set; }
-
+        public Sizes Sizes { get; set; }
         public Product Product { get; set; }
-
-
     }
 }
