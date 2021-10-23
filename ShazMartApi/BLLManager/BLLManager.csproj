@@ -13,4 +13,8 @@
     <ProjectReference Include="..\SazMart.DAL\SazMart.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interface\" />
+  </ItemGroup>
+
 </Project>

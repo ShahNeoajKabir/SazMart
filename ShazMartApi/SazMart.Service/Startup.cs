@@ -1,5 +1,4 @@
-using BLLManager;
-using BLLManager.Interface;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SazMart.Common.Helper;
 using SazMart.DAL.Database;
-using SazMart.DAL.ModelClass.Entities;
+using SazMart.DAL.ModelClass.DTO;
 
 namespace SazMart.Service
 {
@@ -26,16 +25,16 @@ namespace SazMart.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentityCore<AppUser>(opt =>
-            {
-                opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequireUppercase = false;
-                opt.Password.RequireLowercase = false;
-                opt.Password.RequiredUniqueChars = 0;
-                opt.Password.RequireDigit = false;
+            //services.AddIdentityCore<AppUser>(opt =>
+            //{
+            //    opt.Password.RequireNonAlphanumeric = false;
+            //    opt.Password.RequireUppercase = false;
+            //    opt.Password.RequireLowercase = false;
+            //    opt.Password.RequiredUniqueChars = 0;
+            //    opt.Password.RequireDigit = false;
 
-            })
-                .AddEntityFrameworkStores<DatabaseContext>();
+            //})
+            //    .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -50,14 +49,6 @@ namespace SazMart.Service
                 );
 
             services.AddAutoMapper(typeof(AutoMappingProfile).Assembly);
-            services.AddScoped<ICountryBLLManager, CountryBLLManager>();
-            services.AddScoped<ICityBLLManager, CityBLLManager>();
-            services.AddScoped<IUserBLLManager, UserBLLManager>();
-            services.AddScoped<ICategoriesBLLManager, CategoriesBLLManager>();
-            services.AddScoped<IBrandBLLManager, BrandBLLManager>();
-            services.AddScoped<ITagBLLManager, TagBLLManager>();
-            services.AddScoped<IProductBLLManager, ProductBLLManager>();
-            services.AddScoped<IColorBLLManager, ColorBLLManager>();
 
 
             services.AddCors(options =>

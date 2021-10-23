@@ -17,4 +17,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ModelClass\Model Class\" />
+  </ItemGroup>
+
 </Project>

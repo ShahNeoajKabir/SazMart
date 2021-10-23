@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SazMart.DAL.ModelClass.DTO
 {
-    public class RegistrationDTO
+    public class AppUser
     {
     }
 }
