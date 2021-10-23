@@ -1,4 +1,6 @@
 
+using BLLManager.BusinessLogic;
+using BLLManager.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -49,7 +51,7 @@ namespace SazMart.Service
                 );
 
             services.AddAutoMapper(typeof(AutoMappingProfile).Assembly);
-
+            services.AddScoped<IBrandBLLManager, BrandBLLManager>();
 
             services.AddCors(options =>
             {
