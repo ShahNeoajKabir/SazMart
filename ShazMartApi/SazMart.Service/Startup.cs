@@ -52,6 +52,7 @@ namespace SazMart.Service
 
             services.AddAutoMapper(typeof(AutoMappingProfile).Assembly);
             services.AddScoped<IBrandBLLManager, BrandBLLManager>();
+            services.AddScoped<ICategoryBLLManager, CategoryBLLManager>();
 
             services.AddCors(options =>
             {

@@ -36,7 +36,6 @@ namespace BLLManager.BusinessLogic
                 brand.CreatedDateTime = DateTime.Now;
                 await _context.Brands.AddAsync(brand);
             }
-
             brand = _mapper.Map((BrandViewModel)model, brand);
             await _context.SaveChangesAsync();
             return brand.Id;

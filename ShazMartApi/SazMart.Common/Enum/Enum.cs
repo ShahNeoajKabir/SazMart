@@ -28,23 +28,6 @@ namespace SazMart.Common.Enum
             Inactive=2
         }
 
-        public enum Color
-        {
-            White=1,
-            Black=2,
-            Blue=3,
-            Red=4,
-            Yellow=5
-        }
-
-        public enum Size
-        {
-            S=1,
-            M=2,
-            L=3,
-            XL=4,
-            XXL=5,
-            XXX=6
-        }
+        
     }
 }

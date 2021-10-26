@@ -12,6 +12,9 @@ namespace SazMart.Common.Helper
         {
             CreateMap<BrandViewModel, Brand>();
             CreateMap<Brand, BrandViewModel>();
+
+            CreateMap<Categories, CategoryViewModel>();
+            CreateMap<CategoryViewModel, Categories>();
         }
     }
 }
