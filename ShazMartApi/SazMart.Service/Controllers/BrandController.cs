@@ -28,5 +28,7 @@ namespace SazMart.Service.Controllers
             var res =await _bLLManager.Upsert(brand);
             return Ok(res);
         }
+
+
     }
 }

@@ -11,5 +11,6 @@ namespace BLLManager.Interface
     {
         Task<Guid> Upsert(BrandViewModel model);
         Task<bool> SaveChangeAll();
+        Task<bool> IsExits(string brandName);
     }
 }

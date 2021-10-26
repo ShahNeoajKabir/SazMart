@@ -32,24 +32,26 @@ namespace BLLManager.BusinessLogic
             if (brand == null)
             {
                 brand = new Brand();
+                brand.CreatedBy = "Bappy";
+                brand.CreatedDateTime = DateTime.Now;
                 await _context.Brands.AddAsync(brand);
             }
 
             brand = _mapper.Map((BrandViewModel)model, brand);
-
-            if (brand.Id == Guid.Empty)
-            {
-                brand.Id = Guid.NewGuid();
-                brand.CreatedBy = "Bappy";
-                brand.CreatedDateTime = DateTime.Now;
-            }
-
             await _context.SaveChangesAsync();
             return brand.Id;
         }
-        public Task<bool> SaveChangeAll()
+        public async Task<bool> SaveChangeAll()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+
+
+        public async Task<bool>IsExits(string brandName)
+        {
+            return await _context.Brands.AnyAsync(p => p.Name == brandName);
+         
         }
 
         
